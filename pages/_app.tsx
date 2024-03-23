@@ -14,6 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 					createOnLogin: 'all-users',
 				},
 				defaultChain: baseSepolia,
+				supportedChains: [baseSepolia],
 			}}
 		>
 			<Meta />
