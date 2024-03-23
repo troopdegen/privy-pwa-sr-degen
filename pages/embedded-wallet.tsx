@@ -4,7 +4,7 @@ import { links } from '@/lib/links'
 import { usePrivy, useWallets } from '@privy-io/react-auth'
 import { useState } from 'react'
 import { createWalletClient, custom, isAddress, parseEther } from 'viem'
-import { baseGoerli } from 'viem/chains'
+import { baseSepolia } from 'viem/chains'
 
 const EmbeddedWallet = () => {
 	const { signMessage, sendTransaction, exportWallet } = usePrivy()
@@ -35,14 +35,14 @@ const EmbeddedWallet = () => {
 	const onTransfer = async () => {
 		if (!embeddedWallet) return
 		try {
-			// Switch network to Base Goerli
-			await embeddedWallet.switchChain(baseGoerli.id)
+			// Switch network to Base Sepolia
+			await embeddedWallet.switchChain(baseSepolia.id)
 			// Get an EIP1193 provider from the embedded wallet
 			const provider = await embeddedWallet.getEthereumProvider()
 			// From the EIP1193 provider, create a viem wallet client
 			const walletClient = createWalletClient({
 				account: embeddedWallet.address as `0x${string}`,
-				chain: baseGoerli,
+				chain: baseSepolia,
 				transport: custom(provider),
 			})
 
@@ -90,8 +90,8 @@ const EmbeddedWallet = () => {
 					Transfer ETH
 				</p>
 				<p className='mt-2 text-sm text-gray-600'>
-					Transfer Goerli ETH from your embedded wallet. Enter a valid recipient
-					address to enable the button.
+					Transfer Sepolia ETH from your embedded wallet. Enter a valid
+					recipient address to enable the button.
 				</p>
 				<input
 					type='text'
@@ -118,7 +118,7 @@ const EmbeddedWallet = () => {
 						See your transaction on{' '}
 						<a
 							className='underline'
-							href={`${links.baseGoerli.transactionExplorer}${txHash}`}
+							href={`${links.baseSepolia.transactionExplorer}${txHash}`}
 							target='_blank'
 							rel='noreferrer noopener'
 						>

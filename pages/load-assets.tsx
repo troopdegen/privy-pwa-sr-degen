@@ -4,7 +4,7 @@ import { links } from '@/lib/links'
 import { usePrivy, useWallets } from '@privy-io/react-auth'
 import { useState } from 'react'
 import { createWalletClient, custom, parseEther } from 'viem'
-import { baseGoerli } from 'viem/chains'
+import { baseSepolia } from 'viem/chains'
 
 const LoadAssets = () => {
 	const { connectWallet } = usePrivy()
@@ -21,14 +21,14 @@ const LoadAssets = () => {
 	const onTransfer = async () => {
 		if (!externalWallet || !embeddedWallet) return
 		try {
-			// Switch chain to Base Goerli
-			await externalWallet.switchChain(baseGoerli.id)
+			// Switch chain to Base Sepolia
+			await externalWallet.switchChain(baseSepolia.id)
 
 			// Build viem wallet client for external wallet
 			const provider = await externalWallet.getEthereumProvider()
 			const walletClient = createWalletClient({
 				account: externalWallet.address as `0x${string}`,
-				chain: baseGoerli,
+				chain: baseSepolia,
 				transport: custom(provider),
 			})
 
@@ -53,11 +53,11 @@ const LoadAssets = () => {
 			method: 'wallet_addEthereumChain',
 			params: [
 				{
-					chainId: `0x${baseGoerli.id.toString(16)}`,
-					chainName: baseGoerli.name,
-					nativeCurrency: baseGoerli.nativeCurrency,
-					rpcUrls: [baseGoerli.rpcUrls.public?.http[0] ?? ''],
-					blockExplorerUrls: [baseGoerli.blockExplorers?.default.url ?? ''],
+					chainId: `0x${baseSepolia.id.toString(16)}`,
+					chainName: baseSepolia.name,
+					nativeCurrency: baseSepolia.nativeCurrency,
+					rpcUrls: [baseSepolia.rpcUrls.public?.http[0] ?? ''],
+					blockExplorerUrls: [baseSepolia.blockExplorers?.default.url ?? ''],
 				},
 			],
 		})
@@ -72,7 +72,7 @@ const LoadAssets = () => {
 				<p className='mt-2 text-sm text-gray-600'>
 					First, connect an external wallet to send assets to your embedded
 					wallet. The wallet <span className='font-bold'>must</span> support the
-					Base Goerli network. We recommend MetaMask.
+					Base Sepolia network. We recommend MetaMask.
 				</p>
 				<p className='mt-2 text-sm text-gray-600'></p>
 				<button
@@ -93,7 +93,7 @@ const LoadAssets = () => {
 					readOnly
 				/>
 				<p className='mt-2 text-sm text-gray-600'>
-					Next, add the Base Goerli network to your wallet.
+					Next, add the Base Sepolia network to your wallet.
 				</p>
 				<button
 					type='button'
@@ -101,10 +101,10 @@ const LoadAssets = () => {
 					onClick={onAddNetwork}
 					disabled={!externalWallet}
 				>
-					Add Base Goerli Network
+					Add Base Sepolia Network
 				</button>
 				<p className='mt-2 text-sm text-gray-600'>
-					Lastly, click the button below to transfer 0.005 Goerli ETH to your
+					Lastly, click the button below to transfer 0.005 Sepolia ETH to your
 					embedded wallet.
 				</p>
 				<button
@@ -120,7 +120,7 @@ const LoadAssets = () => {
 						See your transaction on{' '}
 						<a
 							className='underline'
-							href={`${links.baseGoerli.transactionExplorer}${txHash}`}
+							href={`${links.baseSepolia.transactionExplorer}${txHash}`}
 							target='_blank'
 							rel='noreferrer noopener'
 						>
