@@ -1,16 +1,28 @@
-# Privy PWA Demo
+# Sr. Degen
 
-This is a template progressive web app (PWA) built with [Privy](https://www.privy.io/), [Viem](https://viem.sh/), [NextPWA](https://www.npmjs.com/package/next-pwa), and [TailwindCSS](https://tailwindcss.com/). All transactions are sent on the [Base](https://base.org/) Goerli testnet.
+Your trustworthy and legend-telling bartender
 
-You can see the deployed version at [pwa.privy.io](https://pwa.privy.io/).
+## Getting started
 
-## Setup
+Cloned from template progressive web app (PWA) built with [Privy](https://www.privy.io/) for ETHGlobal's [Frameworks hackathon](https://ethglobal.com/events/frameworks).
+
+### Built with
+
+- [Privy](https://www.privy.io/)
+- [Viem](https://viem.sh/)
+- [NextPWA](https://www.npmjs.com/package/next-pwa)
+- [TailwindCSS](https://tailwindcss.com/)
+- All transactions are sent on the [Base](https://base.org/) Sepolia testnet.
+
+You can see the deployed version at [srdegen.xyz](https://srdegen.xyz/).
+
+### Setup
 
 First, clone this repo:
 
 ```sh
-npx degit privy-io/create-privy-pwa my-pwa-project
-cd my-pwa-project
+git clone https://github.com/angelmc32/sr-degen
+cd sr-degen
 ```
 
 Next, install dependencies, _(includes `@privy-io/react-auth`, `viem`, and `next-pwa`:)_
@@ -26,6 +38,7 @@ cp .env.example.local .env.local
 ```
 
 and add your Privy App ID:
+
 ```
 NEXT_PUBLIC_PRIVY_APP_ID=insert-your-app-id
 ```
@@ -38,7 +51,7 @@ npm run dev
 
 visit `http://localhost:3004` in your browser to see the PWA in action!
 
-For testing development on mobile, we recommend using `ngrok` ([guide](https://www.aleksandrhovhannisyan.com/blog/test-localhost-on-mobile/)), since privy makes use of [crypto.subtle](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle) which requires a **secure context** _(`https`)_
+For testing development on mobile, Privy recommends using `ngrok` ([guide](https://www.aleksandrhovhannisyan.com/blog/test-localhost-on-mobile/)), since privy makes use of [crypto.subtle](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle) which requires a **secure context** _(`https`)_
 
 ## Points of Interest
 
