@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import Meta from '@/components/meta'
 import '@/styles/globals.css'
 import { PrivyProvider } from '@privy-io/react-auth'
+import { baseSepolia } from 'viem/chains'
 
 const App = ({ Component, pageProps }: AppProps) => {
 	return (
@@ -12,6 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 				embeddedWallets: {
 					createOnLogin: 'all-users',
 				},
+				defaultChain: baseSepolia,
 			}}
 		>
 			<Meta />
