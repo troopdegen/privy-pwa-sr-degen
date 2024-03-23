@@ -27,6 +27,7 @@ const Index = () => {
 	})
 
 	useEffect(() => {
+		console.log('CALLING>>>>>>> useEffect 1')
 		// Helps you prompt your users to install your PWA
 		// See https://web.dev/learn/pwa/installation-prompt/
 		// iOS Safari does not have this event, so you will have
@@ -37,9 +38,11 @@ const Index = () => {
 			setIsInstalled(false)
 			setInstallationPrompt(e)
 		})
+		console.log('CALLING>>>>>>> useEffect 2')
 	}, [])
 
 	useEffect(() => {
+		console.log('CALLING>>>>>>> useEffect 3')
 		// Detect if the PWA is installed
 		// https://web.dev/learn/pwa/detection/#detecting-the-transfer
 		window.addEventListener('DOMContentLoaded', () => {
@@ -47,14 +50,20 @@ const Index = () => {
 				setIsInstalled(true)
 			}
 		})
+		console.log('CALLING>>>>>>> useEffect 4')
 	})
 
 	const promptToInstall = async () => {
-		if (!installationPrompt) return
+		console.log('CALLING>>>>>>> useEffect 5')
+		if (!installationPrompt) {
+			console.log('CALLING>>>>>>> useEffect 6')
+			return
+		}
 		installationPrompt.prompt()
 		installationPrompt.userChoice.then((response: { outcome: string }) => {
 			setIsInstalled(response.outcome === 'accepted')
 		})
+		console.log('CALLING>>>>>>> useEffect 7')
 	}
 
 	return (
