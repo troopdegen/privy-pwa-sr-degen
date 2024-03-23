@@ -66,6 +66,20 @@ const Index = () => {
 		console.log('CALLING>>>>>>> useEffect 7')
 	}
 
+	if (!ready) {
+		// Do nothing while the PrivyProvider initializes with updated user state
+		return (
+			<>
+				<Head>
+					<title>Privy PWA Template</title>
+				</Head>
+				<main>
+					<div className='flex h-screen w-screen flex-col items-center justify-center'></div>
+				</main>
+			</>
+		)
+	}
+
 	return (
 		<>
 			<Head>
